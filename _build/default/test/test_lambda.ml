@@ -1,9 +1,14 @@
  let () =
     let id = Church_lambda.Lam("x", Church_lambda.Var "x") in
-    let applied = Church_lambda.App(id, Church_lambda.LitInt 42) in
+    let applied = Church_lambda.App(id, Church_lambda.LitInt 4) in
     print_endline(Church_lambda.to_lam_string applied);
-    (*Expected output: (λx.x 42)*)
+    (*Expected output: ((λx.x) 42)*)
     (*OCaml Equivent: (fun x -> x) 42*)
+ 
+    let str = Church_lambda.LitString "hello" in
+    print_endline (Church_lambda.to_lam_string str);
+    (*Expected output: "hello"*)
+    (*OCaml Equivent: "hello"*)
 
     let boolean = Church_lambda.LitBool true in
     print_endline (Church_lambda.to_lam_string boolean);
@@ -38,4 +43,4 @@
     let complex_if = Church_lambda.If (Church_lambda.BinOp (">", Church_lambda.LitInt 5, Church_lambda.LitInt 3), Church_lambda.LitBool true, Church_lambda.LitBool false) in
     print_endline (Church_lambda.to_lam_string complex_if);
     (*Expected output: (if (5 > 3) then true else false)*)
-    (*OCaml Equivent: if 5 > 3 then true else false*) 
+    (*OCaml Equivent: if 5 > 3 then true else false*)  
