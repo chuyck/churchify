@@ -2,3 +2,8 @@
  (name test_lambda)
  (modules test_lambda)
  (libraries church_lambda))
+
+(test
+ (name test_translator)
+ (modules test_translator)
+ (libraries church_lambda compiler-libs.common))

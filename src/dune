@@ -6,4 +6,4 @@
 (executable
  (name main)
  (modules main)
- (libraries church_lambda compiler-libs.common))
+ (libraries church_lambda compiler-libs.common compiler-libs.toplevel))

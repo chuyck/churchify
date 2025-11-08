@@ -13,14 +13,15 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_c65c8a_output
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_4dc2cf_output
 $ (cd _build/default/test && ./test_lambda.exe)
-> (λx.x (4))
+> (λx.x ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f )))))))
 > ("hello")
 > (λx.λy.x)
-> (λx.x (7))
-> (if (λx.λy.x) then (1) else (0))
-> (let y = (10) in (y + (5)))
-> ((3) * (4))
-> ((λx.λy.(x + y) (2)) (3))
-> (if ((5) > (3)) then (λx.λy.x) else (λx.λy.y))
+> (λx.x ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f ))))))))))
+> (if (λx.λy.x) then ((λf.λx.f (f x (λf.λx.f ))) else ((λf.λx.f )))
+> (let y = ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f )))))))))))) in (y + ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f )))))))))
+> (((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f ))))) * ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f )))))))
+> ((λx.λy.(x + y) ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f ))))) ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f ))))))
+> (if (((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f ))))))) > ((λf.λx.f (f x (λf.λx.f (f x (λf.λx.f (f x (λf.λx.f )))))) then (λx.λy.x) else (λx.λy.y))
+$ (cd _build/default/test && ./test_translator.exe)

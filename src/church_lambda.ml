@@ -12,7 +12,7 @@ type lambda_term =
   | BinOp of string * lambda_term * lambda_term  (* Binary operation *)
 
 (* Helper function to convert integer to Church numeral string *)
-(* let int_to_lam_string n =
+ let int_to_lam_string n =
   let res =
     match n < 0 with
   | true  -> "(λf.λx.f "
@@ -22,7 +22,7 @@ type lambda_term =
     if n = 0 then res ^ ")"
     else res ^ "(f x " ^ helper (n - 1) ^ ")"
   in
-  helper n *)
+  helper n 
 
 (* Convert lambda term to string representation *)
 let rec to_lam_string term = 
@@ -31,7 +31,7 @@ let rec to_lam_string term =
     | Lam (x, body) -> "λ" ^ x ^ "." ^ to_lam_string body ^ ""
     | App (t1, t2) -> "(" ^ to_lam_string t1 ^ " " ^ to_lam_string t2 ^ ")"
     | Let (x, t1, t2) -> "(let " ^ x ^ " = " ^ to_lam_string t1 ^ " in " ^ to_lam_string t2 ^ ")"
-    | LitInt n -> "(" ^ string_of_int n ^ ")"
+    | LitInt n -> "(" ^ int_to_lam_string n ^ ")"
     | LitBool true -> "(λx.λy.x)"
     | LitBool false -> "(λx.λy.y)"
     | LitString s -> "(\"" ^ s ^ "\")"
