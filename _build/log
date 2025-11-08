@@ -1,4 +1,4 @@
-# dune exec ./src/main.exe
+# dune runtest
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /Users/clairehuyck/.cache/dune/db
@@ -13,4 +13,14 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_eaaba3_output
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_c65c8a_output
+$ (cd _build/default/test && ./test_lambda.exe)
+> (λx.x (4))
+> ("hello")
+> (λx.λy.x)
+> (λx.x (7))
+> (if (λx.λy.x) then (1) else (0))
+> (let y = (10) in (y + (5)))
+> ((3) * (4))
+> ((λx.λy.(x + y) (2)) (3))
+> (if ((5) > (3)) then (λx.λy.x) else (λx.λy.y))
