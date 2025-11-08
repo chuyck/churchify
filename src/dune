@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (modules Ast Main)
+ (libraries compiler-libs.common ))
