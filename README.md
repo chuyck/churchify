@@ -1,2 +1,6 @@
 # churchify
-OCaml-based lambda calculus abstractor
+OCaml-based Lambda Calculus Abstractor.
+
+Project Conception:
+Inspired by Alonzo Church's 1930lambda calculus, this project utilizes the functional programming language OCaml to translate OCaml code into lambda calculus function abstractions.
+
