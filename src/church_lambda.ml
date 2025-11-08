@@ -7,9 +7,11 @@ type lambda_term =
   | Let of string * lambda_term * lambda_term  (* Let binding *)
   | LitInt of int                    (* Integer literal *)
   | LitBool of bool                  (* Boolean literal *)
+  | LitString of string              (* String literal *)
   | If of lambda_term * lambda_term * lambda_term  (* If expression *)
   | BinOp of string * lambda_term * lambda_term  (* Binary operation *)
 
+(* Convert lambda term to string representation *)
 let rec to_lam_string term = 
   match term with
     | Var x -> x
@@ -19,6 +21,7 @@ let rec to_lam_string term =
     | LitInt n -> "(" ^ string_of_int n ^ ")"
     | LitBool true -> "(λx.λy.x)"
     | LitBool false -> "(λx.λy.y)"
+    | LitString s -> "\"" ^ s ^ "\""
     | If (cond, then_branch, else_branch) -> (*IFTHENELSE := λp.λa.λb.p a b*)
         "(if " ^ to_lam_string cond ^ " then " ^ to_lam_string then_branch ^ " else " ^ to_lam_string else_branch ^ ")"
     | BinOp (op, t1, t2) -> (*AND := λp.λq.p q p*) (*OR := λp.λq.p p*) (*NOT := λp.p FALSE TRUE*)
