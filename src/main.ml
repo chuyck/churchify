@@ -1,11 +1,5 @@
 open Lambda_lib
 
-let rec lam_list_to_string lst : string=
-    match lst with
-    | [] -> ""
-    | [x] -> Church_lambda.to_lam_string x
-    | x :: xs -> Church_lambda.to_lam_string x ^ " " ^ lam_list_to_string xs
-
 let rec list_to_string lst : string =
   match lst with
   | [] -> ""
@@ -30,8 +24,8 @@ let rec read_input () =
 
     (* Parse *)
     let parsed = Church_translator.parse_expr tokens in
-    let lam_string = lam_list_to_string parsed in
-    print_endline ("Lambda Calculus Representation: " ^ "" ^ lam_string ^ "");
+    let lam_string = Church_lambda.to_lam_string parsed in
+    print_endline ("Lambda Calculus Representation: " ^ lam_string);
     print_endline "----";
 
     (* loop again *)
