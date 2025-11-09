@@ -1,4 +1,4 @@
-# dune runtest
+# dune exec ./src/main.exe --
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /Users/clairehuyck/.cache/dune/db
@@ -13,23 +13,13 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_d04146_output
-$ (cd _build/default/test && ./test_lambda.exe)
-> (λx.x (4))
-> ("hello")
-> (λx.λy.x)
-> (λx.x (7))
-> (if (λx.λy.x) then (1) else (0))
-> (let y = (10) in (y + (5)))
-> ((3) * (4))
-> ((λx.λy.(x + y) (2)) (3))
-> (if ((5) > (3)) then (λx.λy.x) else (λx.λy.y))
-$ (cd _build/default/test && ./test_translate.exe)
-> Tokens: fun y -> x + y
-> λy.x + y
-> Tokens: let z = 5 in z * 2
-> (let z = (5) in z) * (2)
-> Tokens: if true then 1 else 0
-> if (λx.λy.x) then (1) else (0)
-> Tokens: fun x -> fun y -> x - y
-> λx.λy.x - y
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_c94f9e_output
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamldep.opt -modules -impl src/church_lambda.ml) > _build/default/src/.lambda_lib.objs/lambda_lib__Church_lambda.impl.d
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.lambda_lib.objs/byte -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -no-alias-deps -opaque -open Lambda_lib -o src/.lambda_lib.objs/byte/lambda_lib__Church_lambda.cmo -c -impl src/church_lambda.ml)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.lambda_lib.objs/byte -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -no-alias-deps -opaque -open Lambda_lib -o src/.lambda_lib.objs/byte/lambda_lib__Church_translator.cmo -c -impl src/church_translator.ml)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.main.eobjs/byte -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -I src/.lambda_lib.objs/byte -no-alias-deps -opaque -o src/.main.eobjs/byte/dune__exe__Main.cmi -c -intf src/main.mli)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.main.eobjs/byte -I src/.main.eobjs/native -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -I src/.lambda_lib.objs/byte -I src/.lambda_lib.objs/native -intf-suffix .ml -no-alias-deps -opaque -o src/.main.eobjs/native/dune__exe__Main.cmx -c -impl src/main.ml)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.lambda_lib.objs/byte -I src/.lambda_lib.objs/native -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Lambda_lib -o src/.lambda_lib.objs/native/lambda_lib__Church_lambda.cmx -c -impl src/church_lambda.ml)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.lambda_lib.objs/byte -I src/.lambda_lib.objs/native -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -I /Users/clairehuyck/.opam/default/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Lambda_lib -o src/.lambda_lib.objs/native/lambda_lib__Church_translator.cmx -c -impl src/church_translator.ml)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o src/lambda_lib.cmxa src/.lambda_lib.objs/native/lambda_lib.cmx src/.lambda_lib.objs/native/lambda_lib__Printer.cmx src/.lambda_lib.objs/native/lambda_lib__Church_lambda.cmx src/.lambda_lib.objs/native/lambda_lib__Church_translator.cmx src/.lambda_lib.objs/native/lambda_lib__Ast.cmx)
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o src/main.exe /Users/clairehuyck/.opam/default/lib/ocaml/str/str.cmxa /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs/ocamlcommon.cmxa /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs/ocamlbytecomp.cmxa src/lambda_lib.cmxa src/.main.eobjs/native/dune__exe__Main.cmx)
