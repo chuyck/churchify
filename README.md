@@ -32,10 +32,10 @@ Input: fun x -> x
 Output: (λx.x)  
   
 If  
-Input: if true then 5 else 6  
-Output: if (λt.λf.t) then (λf.λx.(f (f (f (f (f x)))))) else (λf.λx.(f (f (f (f (f (f x)))))))  
+Input: if true then 1 else 0 
+Output: (if ((λt.λf.t)) then ((λf.λx.(f x))) else ((λf.λx.x)))  
   
 Let  
 Input: let x = 1 in fun x -> x  
-Output: (let x = (let x = (λf.λx.(f x)) in (λx.x))  
+Output: (let x = (λf.λx.(f x)) in (λx.x))  
   
