@@ -31,9 +31,9 @@ Simple Functions
 Input: fun x -> x  
 Output: (λx.x)  
   
-If  
-Input: if true then 1 else 0 
-Output: (if ((λt.λf.t)) then ((λf.λx.(f x))) else ((λf.λx.x)))  
+If   
+Input: if true then 1 else 0   
+Output: (if ((λt.λf.t)) then ((λf.λx.(f x))) else ((λf.λx.x)))    
   
 Let  
 Input: let x = 1 in fun x -> x  
