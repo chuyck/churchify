@@ -31,7 +31,7 @@ let rec read_input () =
     (* Parse *)
     let parsed = Church_translator.parse_expr tokens in
     let lam_string = lam_list_to_string parsed in
-    print_endline ("Lambda Calculus Representation: " ^ "(" ^ lam_string ^ ")");
+    print_endline ("Lambda Calculus Representation: " ^ "" ^ lam_string ^ "");
     print_endline "----";
 
     (* loop again *)

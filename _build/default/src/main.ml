@@ -20,7 +20,7 @@ let rec read_input () =
   if String.uppercase_ascii code = "QUIT" then (
     print_endline "Exiting... REPL reduced to (λf.λx.x).";
   ) else if String.uppercase_ascii code = "FUN" then (
-    print_endline "This project is inspired by Alonzo Church's Lambda Calculus. Church received an honorary degree from the University at Buffalo in 1990!";
+    print_endline "This project is inspired by Alonzo Church's Lambda Calculus. Fun Fact: Church received an honorary degree from the University at Buffalo in 1990!";
     read_input ()
   ) else (
     (* Tokenize *)
@@ -31,7 +31,7 @@ let rec read_input () =
     (* Parse *)
     let parsed = Church_translator.parse_expr tokens in
     let lam_string = lam_list_to_string parsed in
-    print_endline ("Lambda Calculus Representation: " ^ "(" ^ lam_string ^ ")");
+    print_endline ("Lambda Calculus Representation: " ^ "" ^ lam_string ^ "");
     print_endline "----";
 
     (* loop again *)

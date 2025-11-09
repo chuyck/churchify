@@ -19,14 +19,14 @@ let int_to_lam_string n =
   in
   match n < 0 with
     | true  -> "λp.λp.f(λf.λx." ^ apply_f n "x" ^ "))"
-    | false -> "(λf.λx." ^ apply_f n "x" ^ ")"
+    | false -> "λf.λx." ^ apply_f n "x" ^ ""
 
 
 (* Convert lambda term to string representation *)
 let rec to_lam_string term = 
   match term with
     | Var x -> x
-    | Lam (x, body) -> "λ" ^ x ^ "." ^ to_lam_string body ^ ""
+    | Lam (x, body) -> "(λ" ^ x ^ "." ^ to_lam_string body ^ ")"
     | App (t1, t2) -> "(" ^ to_lam_string t1 ^ " " ^ to_lam_string t2 ^ ")"
     | Let (x, t1, t2) -> "(let " ^ x ^ " = " ^ to_lam_string t1 ^ " in " ^ to_lam_string t2 ^ ")"
     | LitInt n -> "(" ^ int_to_lam_string n ^ ")"
@@ -34,7 +34,7 @@ let rec to_lam_string term =
     | LitBool false -> "(λt.λf.f)"
     | LitString s -> "(\"" ^ s ^ "\")"
     | If (cond, then_branch, else_branch) -> (*IFTHENELSE := λp.λa.λb.p a b*)
-        "(if " ^ to_lam_string cond ^ " then " ^ to_lam_string then_branch ^ " else " ^ to_lam_string else_branch ^ ")"
+        "(if (" ^ to_lam_string cond ^ ") then (" ^ to_lam_string then_branch ^ ") else (" ^ to_lam_string else_branch ^ "))"
     | BinOp (op, t1, t2) -> (*AND := λp.λq.p q p*) (*OR := λp.λq.p p*) (*NOT := λp.p FALSE TRUE*)
         "(" ^ to_lam_string t1 ^ " " ^ op ^ " " ^ to_lam_string t2 ^ ")"
 
