@@ -86,10 +86,11 @@ let parse_expr tokens =
   else result
 
 (* Example usage *)
-let () =
+(* let () =
   let input = "let y = 10 in y + 5 * 2" in
   let tokens = tokenize input in
   let ast = parse_expr tokens in
   let lambda_str = Church_lambda.to_lam_string ast in
-  Printf.printf "Input: %s\n" input;
-  Printf.printf "Lambda Calculus: %s\n" lambda_str
+  lambda_str *)
+  (* Printf.printf "Input: %s\n" input;
+  Printf.printf "Lambda Calculus: %s\n" lambda_str *)

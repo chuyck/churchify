@@ -34,7 +34,7 @@ let rec to_lam_string term =
     | LitBool false -> "(λt.λf.f)"
     | LitString s -> "(\"" ^ s ^ "\")"
     | If (cond, then_branch, else_branch) -> (*IFTHENELSE := λp.λa.λb.p a b*)
-        "(if (" ^ to_lam_string cond ^ ") then (" ^ to_lam_string then_branch ^ ") else (" ^ to_lam_string else_branch ^ "))"
+        "(if " ^ to_lam_string cond ^ " then " ^ to_lam_string then_branch ^ " else (" ^ to_lam_string else_branch ^ "))"
     | BinOp (op, t1, t2) -> (*AND := λp.λq.p q p*) (*OR := λp.λq.p p*) (*NOT := λp.p FALSE TRUE*)
         "(" ^ to_lam_string t1 ^ " " ^ op ^ " " ^ to_lam_string t2 ^ ")"
 

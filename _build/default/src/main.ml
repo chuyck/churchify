@@ -8,7 +8,7 @@ let rec list_to_string lst : string =
 
 let rec read_input () =
   print_string "Enter OCaml Code to Convert to Lambda Calculus (or type QUIT to exit): ";
-  flush stdout;  (* ensure prompt appears *)
+  flush stdout;
 
   let code = read_line () in
   if String.uppercase_ascii code = "QUIT" then (
@@ -17,19 +17,27 @@ let rec read_input () =
     print_endline "This project is inspired by Alonzo Church's Lambda Calculus. Fun Fact: Church received an honorary degree from the University at Buffalo in 1990!";
     read_input ()
   ) else (
-    (* Tokenize *)
-    let tokens : string list = Church_translator.tokenize code in
-    let printed_tokens = list_to_string tokens in
-    print_endline ("You Entered: " ^ printed_tokens);
+    try
+      (* Tokenize *)
+      let tokens : string list = Church_translator.tokenize code in
+      let printed_tokens = list_to_string tokens in
+      print_endline ("You Entered: " ^ printed_tokens);
 
-    (* Parse *)
-    let parsed = Church_translator.parse_expr tokens in
-    let lam_string = Church_lambda.to_lam_string parsed in
-    print_endline ("Lambda Calculus Representation: " ^ lam_string);
-    print_endline "----";
+      (* Parse *)
+      let parsed = Church_translator.parse_expr tokens in
+      let lam_string = Church_lambda.to_lam_string parsed in
+      print_endline ("Lambda Calculus Representation: " ^ lam_string);
+      print_endline "----";
 
-    (* loop again *)
-    read_input ()
-  );;
+    with
+    | Failure msg ->
+        (* Catch parse errors *)
+        Printf.printf "Error: %s\n----\n" msg
+    | _ ->
+        (* Catch any other unexpected exceptions *)
+        Printf.printf "An unexpected error occurred.\n----\n"
+  );
+  (* Loop again in all cases *)
+  read_input ();;
 
 read_input ();;
