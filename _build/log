@@ -1,4 +1,4 @@
-# dune runtest
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /Users/clairehuyck/.cache/dune/db
@@ -13,14 +13,12 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_c65c8a_output
-$ (cd _build/default/test && ./test_lambda.exe)
-> (λx.x (4))
-> ("hello")
-> (λx.λy.x)
-> (λx.x (7))
-> (if (λx.λy.x) then (1) else (0))
-> (let y = (10) in (y + (5)))
-> ((3) * (4))
-> ((λx.λy.(x + y) (2)) (3))
-> (if ((5) > (3)) then (λx.λy.x) else (λx.λy.y))
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_90a18b_output
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamldep.opt -modules -impl src/translator.ml) > _build/default/src/.lambda_lib.objs/lambda_lib__Translator.impl.d
+$ (cd _build/default && /Users/clairehuyck/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -bin-annot-occurrences -I src/.lambda_lib.objs/byte -I /Users/clairehuyck/.opam/default/lib/ocaml/compiler-libs -no-alias-deps -opaque -open Lambda_lib -o src/.lambda_lib.objs/byte/lambda_lib__Translator.cmo -c -impl src/translator.ml)
+> File "src/translator.ml", line 17, characters 4-25:
+> 17 |   | Pfunction_cases cases ->
+>          ^^^^^^^^^^^^^^^^^^^^^
+> Error: The constructor Pfunction_cases expects 3 argument(s),
+>        but is applied here to 1 argument(s)
+[2]

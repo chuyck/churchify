@@ -1,9 +1,9 @@
 (library
- (name church_lambda)
+ (name lambda_lib)
  (libraries compiler-libs.common)
  (modules ast church_lambda printer translator))
 
 (executable
  (name main)
  (modules main)
- (libraries church_lambda compiler-libs.common))
+ (libraries lambda_lib compiler-libs.common))
