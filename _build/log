@@ -13,7 +13,10 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_4af6db_output
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_1a9542_output
+$ (cd _build/default/test && ./test_translate.exe)
+> Tokens: fun y -> x + y
+> λy.x ; + ; y
 $ (cd _build/default/test && ./test_lambda.exe)
 > (λx.x (4))
 > ("hello")

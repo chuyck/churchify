@@ -1,1 +1,1 @@
-src/church_translator.ml: List Stdlib Str String
+src/church_translator.ml: Church_lambda List Stdlib Str String

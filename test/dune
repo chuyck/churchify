@@ -2,3 +2,8 @@
  (name test_lambda)
  (modules test_lambda)
  (libraries lambda_lib))
+
+ (test
+ (name test_translate)
+ (modules test_translate)
+ (libraries lambda_lib))

@@ -1,19 +1,12 @@
 open Stdlib
+open Church_lambda
 
 
-type lambda_term =
-  | Var of string
-  | Lam of string * lambda_term
-  | App of lambda_term * lambda_term
-  | Let of string * lambda_term * lambda_term
-  | LitInt of int
-  | LitBool of bool
-  | LitString of string
-  | If of lambda_term * lambda_term * lambda_term
-  | BinOp of string * lambda_term * lambda_term
+type lambda_term = Church_lambda.lambda_term
+
 
 (* Lexer *)
-let tokenize s =
+let tokenize s : string list =
   let re = Str.regexp "\\([a-zA-Z_][a-zA-Z0-9_]*\\|[0-9]+\\|->\\|[-+*/=()]\\)" in
   let rec aux pos acc =
     if pos >= String.length s then List.rev acc
