@@ -13,7 +13,7 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_c65c8a_output
+$ /Users/clairehuyck/.opam/default/bin/ocamlc.opt -config > /var/folders/qn/xhf85f2x6xq0n6j7mt84tkvc0000gn/T/dune_d04146_output
 $ (cd _build/default/test && ./test_lambda.exe)
 > (λx.x (4))
 > ("hello")
@@ -24,3 +24,12 @@ $ (cd _build/default/test && ./test_lambda.exe)
 > ((3) * (4))
 > ((λx.λy.(x + y) (2)) (3))
 > (if ((5) > (3)) then (λx.λy.x) else (λx.λy.y))
+$ (cd _build/default/test && ./test_translate.exe)
+> Tokens: fun y -> x + y
+> λy.x + y
+> Tokens: let z = 5 in z * 2
+> (let z = (5) in z) * (2)
+> Tokens: if true then 1 else 0
+> if (λx.λy.x) then (1) else (0)
+> Tokens: fun x -> fun y -> x - y
+> λx.λy.x - y

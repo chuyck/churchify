@@ -1,3 +1,5 @@
+ open Lambda_lib
+
  let () =
     let id = Church_lambda.Lam("x", Church_lambda.Var "x") in
     let applied = Church_lambda.App(id, Church_lambda.LitInt 4) in
